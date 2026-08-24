@@ -1,0 +1,56 @@
+{
+  "database": "3-OPTIONS",
+  "source": "../samples/3-options.dasdl",
+  "options": [{"name": "STATISTICS", "value": ""}],
+  "parameters": [{"name": "ALLOWEDCORE", "value": "18000"}],
+  "defaults": [],
+  "controlFile": [],
+  "auditTrail": [],
+  "structureDefaults": [],
+  "codeFiles": [],
+  "structures": [
+    {
+      "name": "POP-OF-PERSONNEL",
+      "kind": "item",
+      "line": 6,
+      "type": "population",
+      "size": 9999,
+      "target": "PERSONNEL"
+    },
+    {
+      "name": "PERSONNEL",
+      "kind": "dataset",
+      "line": 7,
+      "items": [
+        {
+          "name": "NAME",
+          "kind": "item",
+          "line": 9,
+          "type": "alpha",
+          "size": 30
+        },
+        {
+          "name": "EMPLOYEE-NO",
+          "kind": "item",
+          "line": 10,
+          "type": "number",
+          "size": 6
+        },
+        {
+          "name": "DEPARTMENT",
+          "kind": "item",
+          "line": 11,
+          "type": "alpha",
+          "size": 20
+        },
+        {
+          "name": "PHONE",
+          "kind": "item",
+          "line": 12,
+          "type": "number",
+          "size": 10
+        }
+      ]
+    }
+  ]
+}

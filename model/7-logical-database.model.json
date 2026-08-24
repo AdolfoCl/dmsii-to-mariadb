@@ -1,0 +1,482 @@
+{
+  "database": "7-LOGICAL-DATABASE",
+  "source": "../samples/7-logical-database.dasdl",
+  "options": [{"name": "AUDIT", "value": ""}, {"name": "REAPPLYCOMPLETED", "value": ""}, {"name": "INDEPENDENTTRANS", "value": ""}],
+  "parameters": [],
+  "defaults": [],
+  "controlFile": [],
+  "auditTrail": [],
+  "structureDefaults": [],
+  "codeFiles": [],
+  "structures": [
+    {
+      "name": "RDS",
+      "kind": "dataset",
+      "line": 11,
+      "datasetKind": "RESTART",
+      "items": [
+        {
+          "name": "RDS-DATA",
+          "kind": "item",
+          "line": 11,
+          "type": "alpha",
+          "size": 30
+        }
+      ]
+    },
+    {
+      "name": "D",
+      "kind": "dataset",
+      "line": 13,
+      "items": [
+        {
+          "name": "D1",
+          "kind": "item",
+          "line": 15,
+          "type": "alpha",
+          "size": 5
+        },
+        {
+          "name": "D2",
+          "kind": "item",
+          "line": 16,
+          "type": "real"
+        },
+        {
+          "name": "E",
+          "kind": "dataset",
+          "line": 17,
+          "items": [
+            {
+              "name": "E1",
+              "kind": "item",
+              "line": 19,
+              "type": "number",
+              "size": 4
+            },
+            {
+              "name": "E2",
+              "kind": "item",
+              "line": 20,
+              "type": "field",
+              "size": 8
+            }
+          ]
+        },
+        {
+          "name": "S-E",
+          "kind": "set",
+          "line": 22,
+          "target": "E",
+          "keys": [{"name": "E1"}]
+        },
+        {
+          "name": "R-E",
+          "kind": "remap",
+          "line": 23,
+          "target": "E",
+          "items": [
+            {
+              "name": "E1",
+              "kind": "carried",
+              "line": 25
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "R-D",
+      "kind": "remap",
+      "line": 29,
+      "target": "D",
+      "items": [
+        {
+          "name": "D1",
+          "kind": "carried",
+          "line": 31
+        },
+        {
+          "name": "R-E",
+          "kind": "carried",
+          "line": 32
+        },
+        {
+          "name": "S-E",
+          "kind": "carried",
+          "line": 33
+        }
+      ]
+    },
+    {
+      "name": "S-D",
+      "kind": "set",
+      "line": 36,
+      "target": "D",
+      "keys": [{"name": "D1"}]
+    },
+    {
+      "name": "LDB1",
+      "kind": "logical-database",
+      "line": 38,
+      "items": [
+        {
+          "name": "D",
+          "kind": "ldb-entry",
+          "line": 38
+        },
+        {
+          "name": "RDS",
+          "kind": "ldb-entry",
+          "line": 38
+        }
+      ]
+    },
+    {
+      "name": "LDB2",
+      "kind": "logical-database",
+      "line": 39,
+      "items": [
+        {
+          "name": "R-D",
+          "kind": "ldb-entry",
+          "line": 39
+        },
+        {
+          "name": "RDS",
+          "kind": "ldb-entry",
+          "line": 39
+        }
+      ]
+    },
+    {
+      "name": "G1",
+      "kind": "item",
+      "line": 46,
+      "type": "alpha",
+      "size": 10
+    },
+    {
+      "name": "G2",
+      "kind": "item",
+      "line": 47,
+      "type": "number",
+      "size": 9,
+      "scale": 2,
+      "signed": true
+    },
+    {
+      "name": "G3",
+      "kind": "item",
+      "line": 48,
+      "type": "real",
+      "size": 12
+    },
+    {
+      "name": "R-G",
+      "kind": "remap",
+      "line": 50,
+      "target": "EXDB",
+      "globalData": true,
+      "items": [
+        {
+          "name": "G1",
+          "kind": "item",
+          "line": 52,
+          "type": "alpha",
+          "size": 10,
+          "readOnly": true
+        },
+        {
+          "name": "G3",
+          "kind": "carried",
+          "line": 53
+        }
+      ]
+    },
+    {
+      "name": "X-D1",
+      "kind": "dataset",
+      "line": 56,
+      "items": [
+        {
+          "name": "A",
+          "kind": "item",
+          "line": 58,
+          "type": "real"
+        },
+        {
+          "name": "B",
+          "kind": "item",
+          "line": 59,
+          "type": "number",
+          "size": 5
+        },
+        {
+          "name": "C",
+          "kind": "item",
+          "line": 60,
+          "type": "alpha",
+          "size": 5
+        }
+      ]
+    },
+    {
+      "name": "S1A",
+      "kind": "set",
+      "line": 63,
+      "target": "X-D1",
+      "keys": [{"name": "A"}]
+    },
+    {
+      "name": "S1B",
+      "kind": "set",
+      "line": 64,
+      "target": "X-D1",
+      "keys": [{"name": "B"}]
+    },
+    {
+      "name": "X-D2",
+      "kind": "dataset",
+      "line": 66,
+      "items": [
+        {
+          "name": "X",
+          "kind": "item",
+          "line": 68,
+          "type": "field",
+          "size": 8
+        },
+        {
+          "name": "Y",
+          "kind": "item",
+          "line": 69,
+          "type": "alpha",
+          "size": 5
+        },
+        {
+          "name": "Z",
+          "kind": "item",
+          "line": 70,
+          "type": "field",
+          "items": [
+            {
+              "name": "Z1",
+              "kind": "field-bit",
+              "line": 70
+            },
+            {
+              "name": "Z2",
+              "kind": "field-bit",
+              "line": 70
+            },
+            {
+              "name": "Z3",
+              "kind": "field-bit",
+              "line": 70
+            }
+          ]
+        },
+        {
+          "name": "XE",
+          "kind": "dataset",
+          "line": 71,
+          "items": [
+            {
+              "name": "K",
+              "kind": "item",
+              "line": 73,
+              "type": "real"
+            },
+            {
+              "name": "M",
+              "kind": "item",
+              "line": 74,
+              "type": "field",
+              "size": 14
+            }
+          ]
+        },
+        {
+          "name": "S-XE",
+          "kind": "set",
+          "line": 76,
+          "target": "XE",
+          "keys": [{"name": "K"}]
+        },
+        {
+          "name": "R-XE",
+          "kind": "remap",
+          "line": 77,
+          "target": "XE",
+          "items": [
+            {
+              "name": "K",
+              "kind": "carried",
+              "line": 79
+            },
+            {
+              "name": "M",
+              "kind": "item",
+              "line": 80,
+              "type": "field",
+              "size": 14,
+              "hidden": true,
+              "attributes": [{"name": "HIDDEN", "value": ""}]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "S2A",
+      "kind": "set",
+      "line": 84,
+      "target": "X-D2",
+      "keys": [{"name": "X"}]
+    },
+    {
+      "name": "S2B",
+      "kind": "set",
+      "line": 85,
+      "target": "X-D2",
+      "keys": [{"name": "X"}, {"name": "Y"}, {"name": "Z"}]
+    },
+    {
+      "name": "R-D2",
+      "kind": "remap",
+      "line": 87,
+      "target": "X-D2",
+      "items": [
+        {
+          "name": "P",
+          "kind": "carried",
+          "line": 89,
+          "renamedFrom": "X"
+        },
+        {
+          "name": "Q",
+          "kind": "item",
+          "line": 90,
+          "type": "alpha",
+          "size": 5,
+          "readOnly": true,
+          "renamedFrom": "Y"
+        },
+        {
+          "name": "R",
+          "kind": "item",
+          "line": 91,
+          "type": "field",
+          "renamedFrom": "Z",
+          "items": [
+            {
+              "name": "R1",
+              "kind": "field-bit",
+              "line": 91,
+              "renamedFrom": "Z1"
+            },
+            {
+              "name": "R2",
+              "kind": "field-bit",
+              "line": 91,
+              "renamedFrom": "Z2"
+            },
+            {
+              "name": "R3",
+              "kind": "field-bit",
+              "line": 91,
+              "renamedFrom": "Z3"
+            }
+          ]
+        },
+        {
+          "name": "R-XE",
+          "kind": "carried",
+          "line": 92
+        },
+        {
+          "name": "S-XE",
+          "kind": "carried",
+          "line": 93
+        }
+      ]
+    },
+    {
+      "name": "LDB3",
+      "kind": "logical-database",
+      "line": 96,
+      "items": [
+        {
+          "name": "EXDB",
+          "kind": "ldb-entry",
+          "line": 96
+        },
+        {
+          "name": "X-D1",
+          "kind": "ldb-entry",
+          "line": 96,
+          "setsMode": "ALL"
+        },
+        {
+          "name": "X-D2",
+          "kind": "ldb-entry",
+          "line": 96,
+          "setsMode": "LIST",
+          "items": [
+            {
+              "name": "S2",
+              "kind": "ldb-set",
+              "line": 96,
+              "renamedFrom": "S2A"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LDB4",
+      "kind": "logical-database",
+      "line": 97,
+      "items": [
+        {
+          "name": "R-G",
+          "kind": "ldb-entry",
+          "line": 97
+        },
+        {
+          "name": "XD",
+          "kind": "ldb-entry",
+          "line": 97,
+          "renamedFrom": "R-D2",
+          "setsMode": "LIST",
+          "items": [
+            {
+              "name": "S",
+              "kind": "ldb-set",
+              "line": 97,
+              "renamedFrom": "S2B"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "LDB5",
+      "kind": "logical-database",
+      "line": 98,
+      "items": [
+        {
+          "name": "X-D1",
+          "kind": "ldb-entry",
+          "line": 98
+        },
+        {
+          "name": "R-D2",
+          "kind": "ldb-entry",
+          "line": 98
+        }
+      ]
+    }
+  ]
+}

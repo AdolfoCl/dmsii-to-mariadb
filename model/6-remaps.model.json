@@ -1,0 +1,401 @@
+{
+  "database": "6-REMAPS",
+  "source": "../samples/6-remaps.dasdl",
+  "options": [],
+  "parameters": [],
+  "defaults": [],
+  "controlFile": [],
+  "auditTrail": [],
+  "structureDefaults": [],
+  "codeFiles": [],
+  "structures": [
+    {
+      "name": "D",
+      "kind": "dataset",
+      "line": 9,
+      "items": [
+        {
+          "name": "A",
+          "kind": "item",
+          "line": 11,
+          "type": "alpha",
+          "size": 5
+        },
+        {
+          "name": "B",
+          "kind": "item",
+          "line": 12,
+          "type": "boolean"
+        },
+        {
+          "name": "F",
+          "kind": "item",
+          "line": 13,
+          "type": "field",
+          "size": 15
+        },
+        {
+          "name": "G",
+          "kind": "item",
+          "line": 14,
+          "type": "group",
+          "items": [
+            {
+              "name": "G1",
+              "kind": "item",
+              "line": 16,
+              "type": "alpha",
+              "size": 2
+            },
+            {
+              "name": "G2",
+              "kind": "item",
+              "line": 17,
+              "type": "real"
+            }
+          ]
+        },
+        {
+          "name": "N",
+          "kind": "item",
+          "line": 19,
+          "type": "number",
+          "size": 5,
+          "scale": 2,
+          "signed": true
+        },
+        {
+          "name": "P",
+          "kind": "item",
+          "line": 20,
+          "type": "real",
+          "size": 6,
+          "signed": true
+        }
+      ]
+    },
+    {
+      "name": "R",
+      "kind": "remap",
+      "line": 26,
+      "target": "D",
+      "select": "N GEQ 1.0",
+      "verify": "N GEQ 1.0",
+      "items": [
+        {
+          "name": "A",
+          "kind": "item",
+          "line": 28,
+          "type": "alpha",
+          "size": 5
+        },
+        {
+          "name": "F",
+          "kind": "carried",
+          "line": 29
+        },
+        {
+          "name": "B",
+          "kind": "item",
+          "line": 30,
+          "type": "boolean",
+          "initialValue": "TRUE"
+        },
+        {
+          "name": "G",
+          "kind": "item",
+          "line": 31,
+          "type": "group",
+          "items": [
+            {
+              "name": "G1",
+              "kind": "item",
+              "line": 33,
+              "type": "alpha",
+              "size": 2,
+              "hidden": true,
+              "attributes": [{"name": "HIDDEN", "value": ""}]
+            },
+            {
+              "name": "G2",
+              "kind": "item",
+              "line": 34,
+              "type": "real",
+              "readOnly": true
+            }
+          ]
+        },
+        {
+          "name": "N",
+          "kind": "item",
+          "line": 36,
+          "type": "number",
+          "size": 5,
+          "scale": 2,
+          "signed": true,
+          "initialValue": "1.0",
+          "required": true
+        }
+      ]
+    },
+    {
+      "name": "CUST",
+      "kind": "dataset",
+      "line": 44,
+      "items": [
+        {
+          "name": "NAME",
+          "kind": "item",
+          "line": 46,
+          "type": "alpha",
+          "size": 20
+        },
+        {
+          "name": "BILLING-ADDR",
+          "kind": "item",
+          "line": 47,
+          "type": "group",
+          "items": [
+            {
+              "name": "STREET",
+              "kind": "item",
+              "line": 49,
+              "type": "alpha",
+              "size": 20
+            },
+            {
+              "name": "CITY",
+              "kind": "item",
+              "line": 50,
+              "type": "alpha",
+              "size": 15
+            },
+            {
+              "name": "ZIP",
+              "kind": "item",
+              "line": 51,
+              "type": "number",
+              "size": 9
+            }
+          ]
+        },
+        {
+          "name": "CUST-INFO",
+          "kind": "item",
+          "line": 53,
+          "type": "group",
+          "items": [
+            {
+              "name": "CONTRACT-NO",
+              "kind": "item",
+              "line": 55,
+              "type": "number",
+              "size": 9
+            },
+            {
+              "name": "LIAISON",
+              "kind": "item",
+              "line": 56,
+              "type": "alpha",
+              "size": 20
+            },
+            {
+              "name": "PHONE",
+              "kind": "item",
+              "line": 57,
+              "type": "alpha",
+              "size": 10
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "CUSTOMER",
+      "kind": "remap",
+      "line": 61,
+      "target": "CUST",
+      "items": [
+        {
+          "name": "NAME",
+          "kind": "item",
+          "line": 63,
+          "type": "alpha",
+          "size": 20
+        },
+        {
+          "name": "NEW-CUST-INFO",
+          "kind": "item",
+          "line": 64,
+          "type": "group",
+          "items": [
+            {
+              "name": "CONTRACT-NO",
+              "kind": "item",
+              "line": 66,
+              "type": "number",
+              "size": 9
+            },
+            {
+              "name": "LIAISON",
+              "kind": "item",
+              "line": 67,
+              "type": "alpha",
+              "size": 20
+            },
+            {
+              "name": "PHONE",
+              "kind": "item",
+              "line": 68,
+              "type": "alpha",
+              "size": 10
+            },
+            {
+              "name": "BILLING-ADDR",
+              "kind": "item",
+              "line": 69,
+              "type": "group",
+              "items": [
+                {
+                  "name": "STREET",
+                  "kind": "item",
+                  "line": 71,
+                  "type": "alpha",
+                  "size": 20
+                },
+                {
+                  "name": "CITY",
+                  "kind": "item",
+                  "line": 72,
+                  "type": "alpha",
+                  "size": 15
+                },
+                {
+                  "name": "ZIP",
+                  "kind": "item",
+                  "line": 73,
+                  "type": "number",
+                  "size": 9
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "EMP",
+      "kind": "dataset",
+      "line": 81,
+      "items": [
+        {
+          "name": "RSN-ITEM",
+          "kind": "item",
+          "line": 83,
+          "type": "number",
+          "size": 4
+        },
+        {
+          "name": "LAST-NAME",
+          "kind": "item",
+          "line": 84,
+          "type": "alpha",
+          "size": 20
+        },
+        {
+          "name": "FIRST-NAME",
+          "kind": "item",
+          "line": 85,
+          "type": "alpha",
+          "size": 15
+        },
+        {
+          "name": "SALARY",
+          "kind": "item",
+          "line": 86,
+          "type": "real"
+        },
+        {
+          "name": "HOURLY",
+          "kind": "item",
+          "line": 87,
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "EMP-VIEW",
+      "kind": "remap",
+      "line": 90,
+      "target": "EMP",
+      "items": [
+        {
+          "name": "RSN-ITEM",
+          "kind": "carried",
+          "line": 92
+        },
+        {
+          "name": "LAST-NAME",
+          "kind": "carried",
+          "line": 93
+        },
+        {
+          "name": "FIRST-NAME",
+          "kind": "carried",
+          "line": 94
+        },
+        {
+          "name": "INITIALS",
+          "kind": "item",
+          "line": 95,
+          "type": "alpha",
+          "size": 2,
+          "virtual": true
+        },
+        {
+          "name": "DOUBLED",
+          "kind": "item",
+          "line": 96,
+          "type": "number",
+          "size": 8,
+          "virtual": true,
+          "virtualExpr": "2 * RSN-ITEM"
+        },
+        {
+          "name": "SALARIED",
+          "kind": "item",
+          "line": 97,
+          "type": "boolean",
+          "virtual": true,
+          "virtualExpr": "NOT HOURLY"
+        },
+        {
+          "name": "FLAGS",
+          "kind": "item",
+          "line": 98,
+          "type": "field",
+          "size": 3,
+          "virtual": true
+        },
+        {
+          "name": "NAME-PART",
+          "kind": "item",
+          "line": 99,
+          "type": "group",
+          "virtual": true,
+          "items": [
+            {
+              "name": "SHORT-NAME",
+              "kind": "item",
+              "line": 101,
+              "type": "alpha",
+              "size": 8,
+              "virtual": true,
+              "virtualExpr": "LAST-NAME"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

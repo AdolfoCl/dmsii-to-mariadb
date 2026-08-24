@@ -1,0 +1,48 @@
+{
+  "database": "1-PERSONNEL",
+  "source": "../samples/1-personnel.dasdl",
+  "options": [],
+  "parameters": [],
+  "defaults": [],
+  "controlFile": [],
+  "auditTrail": [],
+  "structureDefaults": [],
+  "codeFiles": [],
+  "structures": [
+    {
+      "name": "PERSONNEL",
+      "kind": "dataset",
+      "line": 4,
+      "items": [
+        {
+          "name": "NAME",
+          "kind": "item",
+          "line": 6,
+          "type": "alpha",
+          "size": 30
+        },
+        {
+          "name": "EMPLOYEE-NO",
+          "kind": "item",
+          "line": 7,
+          "type": "number",
+          "size": 6
+        },
+        {
+          "name": "DEPARTMENT",
+          "kind": "item",
+          "line": 8,
+          "type": "alpha",
+          "size": 20
+        },
+        {
+          "name": "PHONE",
+          "kind": "item",
+          "line": 9,
+          "type": "number",
+          "size": 10
+        }
+      ]
+    }
+  ]
+}

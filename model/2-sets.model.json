@@ -1,0 +1,62 @@
+{
+  "database": "2-SETS",
+  "source": "../samples/2-sets.dasdl",
+  "options": [],
+  "parameters": [],
+  "defaults": [],
+  "controlFile": [],
+  "auditTrail": [],
+  "structureDefaults": [],
+  "codeFiles": [],
+  "structures": [
+    {
+      "name": "PERSONNEL",
+      "kind": "dataset",
+      "line": 4,
+      "items": [
+        {
+          "name": "NAME",
+          "kind": "item",
+          "line": 6,
+          "type": "alpha",
+          "size": 30
+        },
+        {
+          "name": "EMPLOYEE-NO",
+          "kind": "item",
+          "line": 7,
+          "type": "number",
+          "size": 6
+        },
+        {
+          "name": "DEPARTMENT",
+          "kind": "item",
+          "line": 8,
+          "type": "alpha",
+          "size": 20
+        },
+        {
+          "name": "PHONE",
+          "kind": "item",
+          "line": 9,
+          "type": "number",
+          "size": 10
+        }
+      ]
+    },
+    {
+      "name": "FIND-BY-NAME",
+      "kind": "set",
+      "line": 11,
+      "target": "PERSONNEL",
+      "keys": [{"name": "NAME"}]
+    },
+    {
+      "name": "FIND-BY-NUMBER",
+      "kind": "set",
+      "line": 12,
+      "target": "PERSONNEL",
+      "keys": [{"name": "EMPLOYEE-NO"}]
+    }
+  ]
+}

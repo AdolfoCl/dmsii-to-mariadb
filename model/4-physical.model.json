@@ -1,0 +1,90 @@
+{
+  "database": "4-PHYSICAL",
+  "source": "../samples/4-physical.dasdl",
+  "options": [{"name": "AUDIT", "value": ""}],
+  "parameters": [],
+  "defaults": [],
+  "controlFile": [],
+  "auditTrail": [],
+  "structureDefaults": [],
+  "codeFiles": [],
+  "structures": [
+    {
+      "name": "RESTARTDS",
+      "kind": "dataset",
+      "line": 5,
+      "datasetKind": "RESTART",
+      "items": [
+        {
+          "name": "R-PROGRAMNAME",
+          "kind": "item",
+          "line": 7,
+          "type": "alpha",
+          "size": 25
+        },
+        {
+          "name": "R-USERINFO",
+          "kind": "item",
+          "line": 8,
+          "type": "alpha",
+          "size": 250
+        }
+      ]
+    },
+    {
+      "name": "PERSONNEL",
+      "kind": "dataset",
+      "line": 10,
+      "items": [
+        {
+          "name": "NAME",
+          "kind": "item",
+          "line": 12,
+          "type": "alpha",
+          "size": 30
+        },
+        {
+          "name": "EMPLOYEE-NO",
+          "kind": "item",
+          "line": 13,
+          "type": "number",
+          "size": 6
+        },
+        {
+          "name": "DEPARTMENT",
+          "kind": "item",
+          "line": 14,
+          "type": "alpha",
+          "size": 20
+        },
+        {
+          "name": "PHONE",
+          "kind": "item",
+          "line": 15,
+          "type": "number",
+          "size": 10
+        }
+      ]
+    },
+    {
+      "name": "FIND-BY-NAME",
+      "kind": "set",
+      "line": 17,
+      "target": "PERSONNEL",
+      "keys": [{"name": "NAME"}]
+    },
+    {
+      "name": "FIND-BY-NUMBER",
+      "kind": "set",
+      "line": 18,
+      "target": "PERSONNEL",
+      "keys": [{"name": "EMPLOYEE-NO"}]
+    },
+    {
+      "name": "PERSONNEL",
+      "kind": "physical",
+      "line": 19,
+      "attributes": [{"name": "KIND", "value": "PACK"}, {"name": "BUFFERS", "value": "2"}]
+    }
+  ]
+}

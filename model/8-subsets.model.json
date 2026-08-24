@@ -1,0 +1,207 @@
+{
+  "database": "8-SUBSETS",
+  "source": "../samples/8-subsets.dasdl",
+  "options": [],
+  "parameters": [],
+  "defaults": [],
+  "controlFile": [],
+  "auditTrail": [],
+  "structureDefaults": [],
+  "codeFiles": [],
+  "structures": [
+    {
+      "name": "STUDENTS",
+      "kind": "dataset",
+      "line": 9,
+      "items": [
+        {
+          "name": "NAME",
+          "kind": "item",
+          "line": 11,
+          "type": "alpha",
+          "size": 20
+        },
+        {
+          "name": "GPA",
+          "kind": "item",
+          "line": 12,
+          "type": "number",
+          "size": 3,
+          "scale": 2
+        },
+        {
+          "name": "MAJOR",
+          "kind": "item",
+          "line": 13,
+          "type": "alpha",
+          "size": 20
+        }
+      ]
+    },
+    {
+      "name": "HONOR-ROLL",
+      "kind": "subset",
+      "line": 16,
+      "target": "STUDENTS",
+      "where": "GPA GTR 3.5",
+      "keys": [{"name": "NAME"}]
+    },
+    {
+      "name": "ENGLISH-MAJORS",
+      "kind": "subset",
+      "line": 17,
+      "target": "STUDENTS",
+      "where": "MAJOR = \"ENGLISH\"",
+      "keys": [{"name": "NAME"}]
+    },
+    {
+      "name": "BOOKS",
+      "kind": "dataset",
+      "line": 22,
+      "datasetKind": "COMPACT",
+      "items": [
+        {
+          "name": "TITLE",
+          "kind": "item",
+          "line": 24,
+          "type": "alpha",
+          "size": 20
+        },
+        {
+          "name": "AUTHOR",
+          "kind": "item",
+          "line": 25,
+          "type": "alpha",
+          "size": 20
+        },
+        {
+          "name": "SUBJECT",
+          "kind": "item",
+          "line": 26,
+          "type": "alpha",
+          "size": 20
+        },
+        {
+          "name": "CHECKED-OUT",
+          "kind": "item",
+          "line": 27,
+          "type": "boolean"
+        }
+      ]
+    },
+    {
+      "name": "BY-AUTHOR",
+      "kind": "subset",
+      "line": 30,
+      "target": "BOOKS",
+      "where": "NOT CHECKED-OUT",
+      "keys": [{"name": "AUTHOR"}],
+      "data": [{"name": "SUBJECT"}, {"name": "TITLE"}]
+    },
+    {
+      "name": "BY-SUBJECT",
+      "kind": "subset",
+      "line": 33,
+      "target": "BOOKS",
+      "where": "NOT CHECKED-OUT",
+      "keys": [{"name": "SUBJECT"}],
+      "data": [{"name": "AUTHOR"}, {"name": "TITLE"}]
+    },
+    {
+      "name": "BY-TITLE",
+      "kind": "set",
+      "line": 39,
+      "target": "BOOKS",
+      "duplicates": false,
+      "keys": [{"name": "TITLE"}],
+      "data": [{"name": "AUTHOR"}]
+    },
+    {
+      "name": "EMPLOYEE",
+      "kind": "dataset",
+      "line": 43,
+      "items": [
+        {
+          "name": "EMP-NUMBER",
+          "kind": "item",
+          "line": 45,
+          "type": "number",
+          "size": 7
+        },
+        {
+          "name": "NAME",
+          "kind": "item",
+          "line": 46,
+          "type": "alpha",
+          "size": 20
+        },
+        {
+          "name": "TITLE",
+          "kind": "item",
+          "line": 47,
+          "type": "alpha",
+          "size": 18
+        },
+        {
+          "name": "SUBORDINATE",
+          "kind": "subset",
+          "line": 48,
+          "target": "EMPLOYEE",
+          "setType": "ORDERED LIST",
+          "keys": [{"name": "EMP-NUMBER"}]
+        }
+      ]
+    },
+    {
+      "name": "DEPT",
+      "kind": "dataset",
+      "line": 58,
+      "items": [
+        {
+          "name": "DEPT-NO",
+          "kind": "item",
+          "line": 60,
+          "type": "number",
+          "size": 4
+        },
+        {
+          "name": "POSTING",
+          "kind": "dataset",
+          "line": 61,
+          "items": [
+            {
+              "name": "LINE-NO",
+              "kind": "item",
+              "line": 63,
+              "type": "number",
+              "size": 6
+            },
+            {
+              "name": "AMOUNT",
+              "kind": "item",
+              "line": 64,
+              "type": "number",
+              "size": 11,
+              "scale": 2,
+              "signed": true
+            },
+            {
+              "name": "VOIDED",
+              "kind": "item",
+              "line": 65,
+              "type": "boolean"
+            }
+          ]
+        },
+        {
+          "name": "OPEN-POSTINGS",
+          "kind": "subset",
+          "line": 67,
+          "target": "POSTING",
+          "where": "NOT VOIDED",
+          "keys": [{"name": "LINE-NO"}]
+        }
+      ]
+    }
+  ]
+}

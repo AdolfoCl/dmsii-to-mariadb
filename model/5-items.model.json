@@ -1,0 +1,99 @@
+{
+  "database": "5-ITEMS",
+  "source": "../samples/5-items.dasdl",
+  "options": [],
+  "parameters": [],
+  "defaults": [],
+  "controlFile": [],
+  "auditTrail": [],
+  "structureDefaults": [],
+  "codeFiles": [],
+  "structures": [
+    {
+      "name": "C",
+      "kind": "dataset",
+      "line": 4,
+      "datasetKind": "COMPACT",
+      "items": [
+        {
+          "name": "B",
+          "kind": "item",
+          "line": 6,
+          "type": "boolean",
+          "initialValue": "TRUE"
+        },
+        {
+          "name": "F",
+          "kind": "item",
+          "line": 7,
+          "type": "field",
+          "items": [
+            {
+              "name": "F1",
+              "kind": "item",
+              "line": 9,
+              "type": "boolean"
+            },
+            {
+              "name": "F2",
+              "kind": "item",
+              "line": 10,
+              "type": "boolean"
+            }
+          ]
+        },
+        {
+          "name": "N",
+          "kind": "item",
+          "line": 12,
+          "type": "number",
+          "size": 3
+        },
+        {
+          "name": "S",
+          "kind": "item",
+          "line": 13,
+          "type": "number",
+          "size": 7,
+          "scale": 2,
+          "signed": true,
+          "null": "HIGH-VALUE",
+          "initialValue": "0"
+        },
+        {
+          "name": "T",
+          "kind": "item",
+          "line": 15,
+          "type": "number",
+          "size": 9,
+          "occurs": 10
+        },
+        {
+          "name": "U",
+          "kind": "item",
+          "line": 16,
+          "type": "number",
+          "size": 5,
+          "scale": 5,
+          "occurs": 20,
+          "dependingOn": "N"
+        },
+        {
+          "name": "V",
+          "kind": "item",
+          "line": 17,
+          "type": "number",
+          "size": 7,
+          "null": "0",
+          "required": true
+        },
+        {
+          "name": "R",
+          "kind": "item",
+          "line": 18,
+          "type": "real"
+        }
+      ]
+    }
+  ]
+}
