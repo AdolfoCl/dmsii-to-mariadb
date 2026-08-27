@@ -102,4 +102,9 @@ compilers for them.
 
 ## License
 
-AGPL-3.0-or-later.
+AGPL-3.0-or-later — see [LICENSE](LICENSE) and [NOTICE](NOTICE).
+
+A schema generated from your own DASDL is yours. The licence of this
+repository places no condition on the generator's output, for the same reason
+GNU Bison places none on the parsers it generates. A commercial licence is
+available for the cases the AGPL does not fit.

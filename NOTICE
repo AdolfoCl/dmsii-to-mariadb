@@ -1,0 +1,46 @@
+dmsii-to-mariadb
+Copyright (c) 2026 Adolfo Díaz
+
+This repository is licensed under the GNU Affero General Public License,
+version 3 or later. The full text is in LICENSE.
+
+
+Commercial licensing
+--------------------
+
+The AGPL is not the only option. If it does not fit — because the schema is
+going into a product you distribute, or into a service whose source you do not
+intend to publish — a commercial licence is available on separate terms.
+
+    Adolfo Díaz  ·  adolfo.diaz@ies.cl
+
+
+What the licence covers, and what it does not
+---------------------------------------------
+
+It covers the contents of this repository: the generated models and schemas,
+and the documentation.
+
+It does not reach the DASDL you write, nor the schema the generator produces
+from it. **A schema generated from your own database description is yours**,
+and the licence of this repository places no condition on it. This is the
+same exception GNU Bison makes for the parsers it generates, and for the same
+reason: a tool that claimed its own licence over its users' output would be
+useless as a tool.
+
+The compiler that produced the schemas here is not distributed in this
+repository, and is licensed separately.
+
+
+Third-party material
+--------------------
+
+The DASDL descriptions in `samples/` are short excerpts adapted from:
+
+    Enterprise Database Server for ClearPath MCP
+    DASDL Programming Reference Manual, 8600 0213-424
+    Unisys Corporation
+
+They are reproduced here for reference and comparison only. Unisys, ClearPath,
+DMSII and DASDL are trademarks of Unisys Corporation, which has no connection
+with this work and does not endorse it.
