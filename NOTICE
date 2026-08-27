@@ -1,35 +1,36 @@
 dmsii-to-mariadb
 Copyright (c) 2026 Adolfo Díaz
 
-This repository is licensed under the GNU Affero General Public License,
-version 3 or later. The full text is in LICENSE.
+Licensed under the MIT License. The full text is in LICENSE.
+
+This repository holds output and documentation: sample DASDL descriptions, the
+models and schemas generated from them, and the README that explains the
+translation. It is meant to be read, quoted and copied, and the licence is
+permissive so that nothing stands in the way of that.
 
 
-Commercial licensing
---------------------
+The compiler is not here
+------------------------
 
-The AGPL is not the only option. If it does not fit — because the schema is
-going into a product you distribute, or into a service whose source you do not
-intend to publish — a commercial licence is available on separate terms.
+The DASDL compiler that produced these schemas — the grammar, the model and the
+SQL generator — is not distributed in this repository and is licensed
+separately. The MIT licence above covers what is in this repository and nothing
+else; it grants no rights over the compiler.
+
+If you have a DMSII database you need in SQL, or you want the generator itself
+under a commercial licence, that conversation starts here:
 
     Adolfo Díaz  ·  adolfo.diaz@ies.cl
 
 
-What the licence covers, and what it does not
----------------------------------------------
+A schema generated from your DASDL is yours
+-------------------------------------------
 
-It covers the contents of this repository: the generated models and schemas,
-and the documentation.
-
-It does not reach the DASDL you write, nor the schema the generator produces
-from it. **A schema generated from your own database description is yours**,
-and the licence of this repository places no condition on it. This is the
-same exception GNU Bison makes for the parsers it generates, and for the same
-reason: a tool that claimed its own licence over its users' output would be
-useless as a tool.
-
-The compiler that produced the schemas here is not distributed in this
-repository, and is licensed separately.
+Stated plainly, because it is the first thing anyone evaluating the generator
+asks: the compiler claims nothing over its output. A schema built from your own
+database description belongs to you, with no condition attached — the same
+position GNU Bison takes on the parsers it generates, and for the same reason.
+A tool that claimed a licence over its users' work would be useless as a tool.
 
 
 Third-party material
@@ -41,6 +42,7 @@ The DASDL descriptions in `samples/` are short excerpts adapted from:
     DASDL Programming Reference Manual, 8600 0213-424
     Unisys Corporation
 
-They are reproduced here for reference and comparison only. Unisys, ClearPath,
-DMSII and DASDL are trademarks of Unisys Corporation, which has no connection
-with this work and does not endorse it.
+They remain the property of their owner and are reproduced here for reference
+and comparison only; the MIT licence above does not extend to them. Unisys,
+ClearPath, DMSII and DASDL are trademarks of Unisys Corporation, which has no
+connection with this work and does not endorse it.
