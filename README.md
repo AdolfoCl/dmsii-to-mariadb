@@ -86,6 +86,27 @@ view is what that is.
 changes; the schema does the same, on the server, so nothing outside has to
 remember. The generator can also leave that to the writer instead.
 
+## The target is a choice, not the design
+
+The compiler builds a model of the database first, and emits from the model.
+MariaDB is the emitter whose output is published here; the model itself carries
+nothing MariaDB-specific, and the same structures reach SQL Server, PostgreSQL
+or a non-relational target by writing another emitter, not by starting over.
+The original of this work ran against **SQL Server**.
+
+## The schema is the easy half
+
+A schema is worth having only if something keeps it current, and dumping a
+production DMSII database on a schedule does not scale — not at this size, and
+not inside any window an operation will give you.
+
+The answer is not to read the database. DMSII already writes down every create,
+modify and delete, in the audit trail. Reading the changes as each audit block
+is written keeps the SQL side current to the minute, with no downtime window, no
+locks, and nothing touching the production database.
+
+That half is not in this repository either. It is the part worth talking about.
+
 ## What is not here
 
 The DASDL compiler itself — the grammar, the model and the SQL generator — is
