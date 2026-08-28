@@ -76,9 +76,16 @@ CREATE TABLE IF NOT EXISTS `personnel` (
 A schema like this is easy to get superficially right and quietly wrong. The
 generated SQL carries its reasoning in comments; these are the choices behind it.
 
-**Every table gets an `rsn`.** DMSII addresses a record by its record serial
-number. A relational row needs a key of its own so that the sets reaching it
-have something to point at.
+Most DMSII databases in service were not written by hand. They come out of EAE
+(Enterprise Application Environment, formerly LINC) or ABSuite, and those emit
+flat structures — tables, without the remaps and subsets DASDL allows. If yours
+came from there, the translation is direct and most of what follows never
+arises. The hand-written ones are where it does.
+
+**Every table gets an `rsn`.** DMSII addresses a record by its physical
+address — the `AAWORD`, which encodes the block and the offset within it. A
+relational row needs a key that does not move when the record does, so the sets
+reaching it have something to point at.
 
 **A set becomes an index. A subset becomes a table.** A set spans its whole data
 set, so an index expresses it exactly. A subset holds entries for only some of
