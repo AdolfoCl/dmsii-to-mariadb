@@ -126,6 +126,19 @@ program is detected and the chain rebuilt, and where the cause was a
 reorganisation the table is reloaded in full and picks the audit trail back up
 from there. No downtime window, nobody called out.
 
+Detecting the reorganisation needs nothing to be instrumented and nobody to
+raise a flag: watch the description file's `CREATIONDATE`, and a change means
+somebody recompiled the DASDL. That alone decides nothing — a physical
+specification may have moved and nothing that matters changed — so the new
+description is compiled and the model compared against the previous one:
+structure count and names, and within each structure every item, its type and
+its `PICTURE`. The chain is regenerated only where something actually differs.
+
+Which is where the compiler stops being a component of this and becomes the
+thing the rest rests on. Without one, "detect a reorganisation" means a person
+reads the new description and decides. With one, it is a comparison of two
+models, and it runs at three in the morning without anybody.
+
 That half is not in this repository either. It is the part worth talking about.
 
 ## What is not here
