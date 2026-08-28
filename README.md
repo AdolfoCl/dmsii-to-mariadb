@@ -1,4 +1,4 @@
-# DMSII → MariaDB
+# DMSII → SQL
 
 A DMSII database describes itself in DASDL. This shows what comes out the other
 side when you compile that description into a relational schema.
@@ -35,6 +35,14 @@ Reference Manual*, 8600 0213-424, and the MariaDB schema generated from each:
 | `7-logical-database` | logical databases | 7 | 7 | 5 | – |
 | `8-subsets` | subsets and automatic subsets | 11 | 2 | – | 10 |
 | | | **28** | **13** | **8** | **10** |
+
+## The target is a choice, not the design
+
+The compiler builds a model of the database first, and emits from the model.
+MariaDB is the emitter whose output is published here; the model itself carries
+nothing MariaDB-specific, and the same structures reach SQL Server, PostgreSQL
+or a non-relational target by writing another emitter, not by starting over.
+The original of this work ran against **SQL Server**.
 
 ## The smallest one, end to end
 
@@ -85,14 +93,6 @@ view is what that is.
 **Automatic subsets get triggers.** DMSII keeps them current as the data set
 changes; the schema does the same, on the server, so nothing outside has to
 remember. The generator can also leave that to the writer instead.
-
-## The target is a choice, not the design
-
-The compiler builds a model of the database first, and emits from the model.
-MariaDB is the emitter whose output is published here; the model itself carries
-nothing MariaDB-specific, and the same structures reach SQL Server, PostgreSQL
-or a non-relational target by writing another emitter, not by starting over.
-The original of this work ran against **SQL Server**.
 
 ## The schema is the easy half
 
