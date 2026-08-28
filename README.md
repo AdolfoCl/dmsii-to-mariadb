@@ -112,6 +112,20 @@ modify and delete, in the audit trail. Reading the changes as each audit block
 is written keeps the SQL side current to the minute, with no downtime window, no
 locks, and nothing touching the production database.
 
+Nor is the schema the only thing generated. The chain that moves the data is
+generated too — the COBOL programs on the MCP side, the WFL jobs that run them,
+the Python that lands the rows in SQL. A new table in the DASDL means
+regenerating, not writing code.
+
+And the question that decides whether any of this is worth building is not
+whether it can be built. It is who fixes it at three in the morning. The event
+that breaks a hand-built extraction is a **reorganisation**: a structure changes
+in the DASDL and the extractor is suddenly reading a layout that no longer
+exists. The generated WFL carries exception handling for exactly that — a failed
+program is detected and the chain rebuilt, and where the cause was a
+reorganisation the table is reloaded in full and picks the audit trail back up
+from there. No downtime window, nobody called out.
+
 That half is not in this repository either. It is the part worth talking about.
 
 ## What is not here
